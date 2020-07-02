@@ -1,2 +1,2 @@
-# perfume
+# Perfume
 Angular UI for perfume store
