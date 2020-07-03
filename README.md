@@ -1,2 +1,2 @@
-# perfume
-Angular UI for perfume store
+# Perfume
+Angular UI for Perfume store
