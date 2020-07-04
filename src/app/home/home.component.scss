@@ -72,3 +72,14 @@ header {
         }
     }
 }
+.cart {
+    background-color: rgba($color: #f6afff, $alpha: 1.0);
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
