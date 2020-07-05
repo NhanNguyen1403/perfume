@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'home',
@@ -7,5 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent {
   
+  constructor() {
+    let categoryList = []
+  }
+  categoryList = ['ALL', 'FAVORITE', 'MEN', 'WOMEN']
+
 
 }
