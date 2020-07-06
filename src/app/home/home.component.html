@@ -4,33 +4,79 @@
 
 <div class="dashboard">
     <div class="category">
-        <div class="item" *ngFor="let item of categoryList">
-            {{item}}
+        <div class="title">CATEGORY</div>
+        <div 
+            class="item" 
+            *ngFor="let item of categoryList"
+            [class.category-active]="currentCategory == item"
+            (click)="changeCategory(item)">{{item}}
         </div>
     </div>    
     <div class="view">
         <div class="search-area">
-            <div class="button-search">BUTTON_SEARCH</div>
-            <div class="typing-search">TYPING_SEARCH</div>
+            <div class="button-search">
+                <div 
+                    class="brand-search" 
+                    *ngFor='let brand of brandList' 
+                    [class.brand-active]="currentBrand== brand"
+                    (click)='changeBrand(brand)'>{{brand}}
+                </div>
+            </div>
+            <div class="typing-search">
+                <input 
+                    type="text"
+                    placeholder="Searching. . ."
+                    (keyup)="searchName($event)"
+                    value={{searchContent}}>
+            </div>
         </div>
         <div class="banner">
-            <div class="slide-banner">SLIDE_BANNER</div>
-            <div class="video-banner">VIDEO_BANNER</div>
+            <div class="slide-banner"></div>
+            <div class="video-banner">
+                <div class="video"></div>
+            </div>
         </div>
         <div class="product">
-            <div class="item">A</div>
-            <div class="item">A</div>
-            <div class="item">A</div>
-            <div class="item">A</div>
-            <div class="item">A</div>
-            <div class="item">A</div>
-            <div class="item">A</div>
-            <div class="item">A</div>
-            <div class="item">A</div>
-            <div class="item">A</div>
-            <div class="item">A</div>
-            <div class="item">A</div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>
+            <div class="item">
+                <div class="add">+</div>
+            </div>            
         </div>
     </div>
 </div>
-<div class="cart">CART</div>
+<div class="cart">
+    <div class="products-chosen">PRODUCT_CHOSEN</div>
+    <div class="placed-order">BUY</div>
+</div>
