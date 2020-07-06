@@ -23,7 +23,7 @@ header {
     display: flex;
     overflow: hidden;
     .category {
-        width: 200px;
+        width: 250px;
         padding-top: 10px;
         .item {
             padding: 10px 50px;
@@ -41,7 +41,7 @@ header {
         }
         .title {
             padding: 10px 50px;
-            margin-bottom: 10px;
+            margin-bottom: 25px;
             font-weight: bolder;            
             text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
         }
@@ -54,7 +54,7 @@ header {
     .view {
         width: 100%;
         padding-right: 50px;
-        overflow-y: scroll;
+        overflow-y: auto;
         .search-area {
             width: 100%;
             margin: 10px 0px;
@@ -62,13 +62,12 @@ header {
             grid-template-columns: 4fr 2fr;
             .button-search {
                 display: flex;
-                overflow-x: scroll;
+                overflow-x: auto;
                 margin-right: 15px;
-                border-radius: 12.5px;
+                border-radius: 12.5px;                               
                 .brand-search {
                     background-color: white;
                     color: #96A0A5;
-                    height: 100%;
                     padding: 10px 20px;
                     border-radius: 15px;
                     margin-right: 15px;
@@ -83,7 +82,6 @@ header {
                     }
                 }
                 .brand-active {
-                    height: 100%;
                     padding: 10px 20px;
                     border-radius: 15px;
                     margin-right: 15px;
@@ -98,8 +96,8 @@ header {
                     height: 100%;
                     border-radius: 15px;
                     border: none;
-                    padding-left: 15px;
-                    margin-left: 15px;
+                    padding-left: 10px;
+                    margin-left: 20px;
                     outline: none;
                 }
             }

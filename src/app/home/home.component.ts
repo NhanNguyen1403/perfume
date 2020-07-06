@@ -30,4 +30,6 @@ export class HomeComponent {
     this.searchContent = event.target.value
     console.log(this.searchContent)
   }
+  horizontalScroll(event: any) {
+  }
 }
