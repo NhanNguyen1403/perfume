@@ -496,8 +496,12 @@ export class HomeComponent {
     },
   ]
   productChosenList = []
+  showProductDetailModal = false
 
 
+  toggleModal() {
+    this.showProductDetailModal = !this.showProductDetailModal
+  }
   changeCategory(newCategory) {
     this.currentCategory = newCategory
   }
@@ -518,6 +522,13 @@ export class HomeComponent {
   }
   addProductToCart(productInfo: any, quantity?: any, size?: any) {    
     let productEntity = {...productInfo}
+    for (let product of this.productChosenList) {
+      if (product.id == productEntity.id) {
+        product.quantity += quantity || 1
+        this.totalPrice += quantity || 1 * product.sizeChosen.price
+        return
+      }
+    }
     productEntity.quantity = quantity || 1
     productEntity.sizeChosen = size || productInfo.size.small
     this.productChosenList.push(productEntity)

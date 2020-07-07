@@ -1,69 +1,76 @@
-<header>
-    <div class="logo">P</div>
-</header>
+<div [class.blur]="showProductDetailModal" >
+    <header>
+        <div class="logo">P</div>
+    </header>
 
-<div class="dashboard">
-    <div class="category">
-        <div class="title">CATEGORY</div>
-        <div 
-            class="item" 
-            *ngFor="let item of categoryList"
-            [class.category-active]="currentCategory == item"
-            (click)="changeCategory(item)">{{item}}
-        </div>
-    </div>    
-    <div class="view">
-        <div class="search-area">
-            <div class="button-search" (wheel)="horizontalScroll($event)">
-                <div 
-                    class="brand-search" 
-                    *ngFor='let brand of brandList' 
-                    (wheel)="horizontalScroll($event, true)"
-                    [class.brand-active]="currentBrand == brand"
-                    (click)='changeBrand(brand)'>{{brand}}
+    <div class="dashboard">
+        <div class="category">
+            <div class="title">CATEGORY</div>
+            <div 
+                class="item" 
+                *ngFor="let item of categoryList"
+                [class.category-active]="currentCategory == item"
+                (click)="changeCategory(item)">{{item}}
+            </div>
+        </div>    
+        <div class="view">
+            <div class="search-area">
+                <div class="button-search" (wheel)="horizontalScroll($event)">
+                    <div 
+                        class="brand-search" 
+                        *ngFor='let brand of brandList' 
+                        (wheel)="horizontalScroll($event, true)"
+                        [class.brand-active]="currentBrand == brand"
+                        (click)='changeBrand(brand)'>{{brand}}
+                    </div>
+                </div>
+                <div class="typing-search">
+                    <input 
+                        type="text"
+                        placeholder="Searching. . ."
+                        (keyup)="searchName($event)"
+                        value={{searchContent}}>
                 </div>
             </div>
-            <div class="typing-search">
-                <input 
-                    type="text"
-                    placeholder="Searching. . ."
-                    (keyup)="searchName($event)"
-                    value={{searchContent}}>
+            <div class="banner">
+                <div class="slide-banner"></div>
+                <div class="video-banner">
+                    <div class="video"></div>
+                </div>
+            </div>        
+            <div class="product">
+                <div class="item" *ngFor='let product of productList' >
+                    <div class="photo-cover" (click)="toggleModal()">
+                        <img src={{product.photos.medium[0]}} alt={{product.name}}>
+                    </div>
+                    <div class="brief">
+                        <p class="name">{{product.name.slice(0,13) + '...'}}</p>
+                        <p class="price">{{product.size.small.price + '.00 $'}}</p>
+                    </div>
+                    <div class="add" (click)="addProductToCart(product)">+</div>
+                </div>                      
             </div>
         </div>
-        <div class="banner">
-            <div class="slide-banner"></div>
-            <div class="video-banner">
-                <div class="video"></div>
+    </div>
+    <div class="cart" [class.cart-active]="this.productChosenList.length > 0">
+        <div class="products-chosen">
+            <div class="item" *ngFor='let productChosen of productChosenList'>
+                <div class="avatar">
+                    <img src={{productChosen.photos.small[0]}} alt={{productChosen.name}}>
+                </div>
+                <div class="product-chosen-brief">
+                    <p class="name">{{productChosen.name.slice(0,13) + '...'}}</p>
+                    <p class="price">{{productChosen.sizeChosen.price + '.00 $'}}</p>
+                </div>
+                <div class="remove">{{productChosen.quantity}}</div>
             </div>
-        </div>        
-        <div class="product">
-            <div class="item" *ngFor='let product of productList' >
-                <div class="photo-cover">
-                    <img src={{product.photos.medium[0]}} alt={{product.name}}>
-                </div>
-                <div class="brief">
-                    <p class="name">{{product.name.slice(0,13) + '...'}}</p>
-                    <p class="price">{{product.size.small.price + '.00 $'}}</p>
-                </div>
-                <div class="add" (click)="addProductToCart(product)">+</div>
-            </div>                      
         </div>
+        <div class="total-price">{{totalPrice + '.00 $'}}</div>
+        <div class="placed-order">BUY</div>
     </div>
 </div>
-<div class="cart" [class.cart-active]="this.productChosenList.length > 0">
-    <div class="products-chosen">
-        <div class="item" *ngFor='let productChosen of productChosenList'>
-            <div class="avatar">
-                <img src={{productChosen.photos.small[0]}} alt={{productChosen.name}}>
-            </div>
-            <div class="product-chosen-brief">
-                <p class="name">{{productChosen.name.slice(0,13) + '...'}}</p>
-                <p class="price">{{productChosen.sizeChosen.price + '.00 $'}}</p>
-            </div>
-            <div class="remove">{{productChosen.quantity}}</div>
-        </div>
-    </div>
-    <div class="total-price">{{totalPrice + '.00 $'}}</div>
-    <div class="placed-order">BUY</div>
+<div *ngIf="showProductDetailModal" (click)="toggleModal()" class="blur-cover"></div>
+<div *ngIf="showProductDetailModal" class="product-detail-modal">
+    <div class="product-detail-photos"></div>
+    <div class="product-detail-content"></div>
 </div>
