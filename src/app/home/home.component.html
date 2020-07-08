@@ -15,11 +15,11 @@
         </div>    
         <div class="view">
             <div class="search-area">
-                <div class="button-search" (wheel)="horizontalScroll($event)">
+                <div class="button-search" (wheel)="horizontalScroll($event, 'button-search')">
                     <div 
                         class="brand-search" 
-                        *ngFor='let brand of brandList' 
-                        (wheel)="horizontalScroll($event, true)"
+                        *ngFor='let brand of brandList'   
+                        (wheel)="horizontalScroll($event, 'button-search')"                      
                         [class.brand-active]="currentBrand == brand"
                         (click)='changeBrand(brand)'>{{brand}}
                     </div>
@@ -39,7 +39,7 @@
                 </div>
             </div>        
             <div class="product">
-                <div class="item" *ngFor='let product of productList' >
+                <div class="item" *ngFor='let product of productListFilter' >
                     <div class="photo-cover" (click)="toggleModal()">
                         <img src={{product.photos.medium[0]}} alt={{product.name}}>
                     </div>
@@ -54,15 +54,17 @@
     </div>
     <div class="cart" [class.cart-active]="this.productChosenList.length > 0">
         <div class="products-chosen">
-            <div class="item" *ngFor='let productChosen of productChosenList'>
-                <div class="avatar">
-                    <img src={{productChosen.photos.small[0]}} alt={{productChosen.name}}>
+            <div class="item-scroll" (wheel)="horizontalScroll($event, 'products-chosen')">
+                <div class="item" *ngFor='let productChosen of productChosenList'>
+                    <div class="avatar">
+                        <img src={{productChosen.photos.small[0]}} alt={{productChosen.name}}>
+                    </div>
+                    <div class="product-chosen-brief">
+                        <p class="name">{{productChosen.name.slice(0,13) + '...'}}</p>
+                        <p class="price">{{productChosen.sizeChosen.price + '.00 $'}}</p>
+                    </div>
+                    <div class="remove">{{productChosen.quantity}}</div>
                 </div>
-                <div class="product-chosen-brief">
-                    <p class="name">{{productChosen.name.slice(0,13) + '...'}}</p>
-                    <p class="price">{{productChosen.sizeChosen.price + '.00 $'}}</p>
-                </div>
-                <div class="remove">{{productChosen.quantity}}</div>
             </div>
         </div>
         <div class="total-price">{{totalPrice + '.00 $'}}</div>
@@ -71,6 +73,15 @@
 </div>
 <div *ngIf="showProductDetailModal" (click)="toggleModal()" class="blur-cover"></div>
 <div *ngIf="showProductDetailModal" class="product-detail-modal">
-    <div class="product-detail-photos"></div>
+    <div class="product-detail-photos">
+        <div class="current-detail-photo">
+            <img src={{currentproductDetailPhoto}}>
+        </div>
+        <div class="list-detail-photos">
+            <div class="list-scroll" (wheel)="horizontalScroll($event, 'list-scroll')">
+                <img *ngFor="let photoPath of productDetail.photos.small" src={{photoPath}}>
+            </div>
+        </div>
+    </div>
     <div class="product-detail-content"></div>
 </div>

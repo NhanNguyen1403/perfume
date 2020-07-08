@@ -155,6 +155,7 @@ header {
                         max-width: 200px;
                         height: auto;                        
                         transition: 300ms ease-out;
+                        border-radius: 5px;
                         &:hover {
                             cursor: pointer;
                             transition: 300ms ease-in;
@@ -229,84 +230,89 @@ header {
     align-items: center;
     transition: 300ms;
     .products-chosen {
-        padding-left: 40px;
+        margin-left: 40px;
         display: flex;
         flex-grow: 1;
         justify-content: start;
-        align-items: center;
-        .item {
-            height: 50px;
-            width: 200px;
-            background-color: #E7EDEF;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            padding-left: 2.5px;
-            margin: 0px 10px;
-            position: relative;
-            animation: zoom-out 300ms;            
-            .avatar {
-                width: 45px;
-                height: 45px;
-                border-radius: 8px;
-                overflow: hidden;
-                img {
-                    width: 100%;
-                    height: 100%;
-                    transition: 300ms;
+        align-items: center;   
+        overflow-x: scroll;    
+        border-radius: 5px; 
+        .item-scroll {
+            display: flex;            
+            .item {
+                height: 50px;
+                width: 200px;
+                background-color: #E7EDEF;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                padding-left: 2.5px;
+                margin: 0px 10px;
+                position: relative;
+                animation: zoom-out 300ms;   
+                .avatar {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        transition: 300ms;
+                        &:hover {
+                            cursor: pointer;
+                            transform: scale(1.3);
+                        }
+                    }
+                }
+                .product-chosen-brief {
+                    flex-grow: 1;
+                    padding-left: 10px;
+                    overflow: hidden;
+                    .name {
+                        font-weight: bolder;
+                        transition: 300ms;
+                        &:hover {
+                            padding-left: 5px;
+                            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+                            cursor: pointer;
+                        }
+                    }
+                    .price {
+                        font-size: 12px;
+                        color: #96A0A5;
+                        transition: 300ms;
+                        &:hover {
+                            padding-left: 5px;
+                            text-shadow: 0px 0px 5px #96a0a57e;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .remove {
+                    position: absolute;
+                    right: -9px;
+                    top: 0px;
+                    width: 16px;
+                    height: 16px;
+                    font-size: 10px;
+                    line-height: 15px;
+                    text-align: center;
+                    font-weight: bolder;
+                    background-color: black;
+                    color: white;
+                    border-radius: 50%;
+                    border: 2px solid white;     
+                    transition: 300ms;          
                     &:hover {
-                        cursor: pointer;
                         transform: scale(1.3);
                     }
                 }
-            }
-            .product-chosen-brief {
-                flex-grow: 1;
-                padding-left: 10px;
-                overflow: hidden;
-                .name {
-                    font-weight: bolder;
-                    transition: 300ms;
-                    &:hover {
-                        padding-left: 5px;
-                        text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-                        cursor: pointer;
-                    }
-                }
-                .price {
-                    font-size: 12px;
-                    color: #96A0A5;
-                    transition: 300ms;
-                    &:hover {
-                        padding-left: 5px;
-                        text-shadow: 0px 0px 5px #96a0a57e;
-                        cursor: pointer;
-                    }
+                &:hover { 
+                    cursor: pointer;
                 }
             }
-            .remove {
-                position: absolute;
-                right: -9px;
-                top: -9px;
-                width: 16px;
-                height: 16px;
-                font-size: 10px;
-                line-height: 15px;
-                text-align: center;
-                font-weight: bolder;
-                background-color: black;
-                color: white;
-                border-radius: 50%;
-                border: 2px solid white;     
-                transition: 300ms;          
-                &:hover {
-                    transform: scale(1.3);
-                }
-            }
-            &:hover { 
-                cursor: pointer;
-            }
-        }
+        }        
     }
     .total-price {
         min-width: 150px;
@@ -357,8 +363,9 @@ header {
     }
 }
 .product-detail-modal {
-    width: 70vw;
-    height: 80vh;
+    width: calc(70vw - 40px);
+    height: calc(80vh - 40px);
+    padding: 20px;
     background-color: white;
     position: absolute;
     z-index: 20;
@@ -368,17 +375,62 @@ header {
     animation: zoom-out 300ms;
     overflow: hidden;
     display: flex;    
+    border-radius: 15px;
     .product-detail-photos {        
         width: 50%;
         height: 100%;
-        background-color: #8BC6EC;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        margin-right: 10px;
+        overflow: hidden;
+        .current-detail-photo {      
+            border-radius: 5px;   
+            overflow: hidden;   
+            img {
+                height: auto;
+                width: auto;
+                margin: 0 auto;
+                border-radius: 5px;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+        .list-detail-photos{
+            min-height: 100px;
+            max-height: 100px;
+            width: 100%;
+            margin: 10px;
+            display: flex;   
+            justify-content: center; 
+            overflow: auto;
+            border-radius: 5px;
+            .list-scroll {
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space: nowrap;                
+                img {
+                    height: 100px;
+                    width: 100px;
+                    overflow-x: scroll;
+                    margin: 0 10px;
+                    border-radius: 5px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+            }
+            }
+            
+        }
         
     }
     .product-detail-content {
         width: 50%;
         height: 100%;
         background-color: #9599E2;
-        
+        border-radius: 5px;
     }
 }
 
