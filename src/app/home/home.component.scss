@@ -73,6 +73,7 @@ header {
                     margin-right: 15px;
                     transition: 300ms;
                     white-space: pre;
+                    animation: zoom-out 300ms;
                     &:hover {
                         background-color: black;
                         color: white;
@@ -142,6 +143,7 @@ header {
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: flex-end;
+                animation: zoom-out 300ms;
                 .photo-cover {
                     width: 100%;
                     height: 100%;
@@ -349,7 +351,7 @@ header {
     left: 0;
     background-color: rgba(255, 255, 255, 0.5);
     filter: blur(3px);   
-    animation: bluring 300ms;     
+    animation: bluring 600ms;    
 }
 .blur-cover {
     width: 100vw;
@@ -363,74 +365,204 @@ header {
     }
 }
 .product-detail-modal {
-    width: calc(70vw - 40px);
-    height: calc(80vh - 40px);
-    padding: 20px;
-    background-color: white;
+    width: 80vw;
+    height: 80vh;
     position: absolute;
     z-index: 20;
     top: 10vh;
-    left: 15vw;
+    left: 10vw;
     box-shadow: 0px 0px 50px 50px rgba(0, 0, 0, 0.2);
     animation: zoom-out 300ms;
     overflow: hidden;
     display: flex;    
     border-radius: 15px;
-    .product-detail-photos {        
-        width: 50%;
-        height: 100%;
+    background-color: #f3f6f7;
+    .product-detail-info {        
+        width: 75%;
+        max-height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         align-items: center;
-        margin-right: 10px;
-        overflow: hidden;
-        .current-detail-photo {      
-            border-radius: 5px;   
-            overflow: hidden;   
-            img {
-                height: auto;
-                width: auto;
-                margin: 0 auto;
-                border-radius: 5px;
+        overflow: hidden;   
+        padding: 20px 0px 10px 35px;
+        .name {
+            line-height: 30px;
+            width: 100%;            
+            font-weight: bolder;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+        }
+        .info {
+            flex-grow: 1;
+            width: 100%;
+            margin: 15px 0px;
+            display: flex;
+            overflow-x: scroll;
+            .current-photo {
+                background-color: #E7EDEF;
+                width: 520px;
+                min-width: 520px;
+                max-width: 520px;
+                border-radius: 15px;
+                display: flex;
+                justify-content: center;                
+                img {
+                    height: 100%;
+                    width: auto;
+                }
+            }
+            .info-content {
+                flex-grow: 1;
+                min-width: 150px;
+                margin-left: 20px;
+                padding-right: 20px;
+                overflow: hidden;
+                .info-tab {
+                    font-weight: bolder;
+                    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+                    margin-bottom: 10px;
+                }
+                .product-description {
+                    height: 100%;
+                    overflow-y: scroll;
+                    .scroll {
+                        font-size: 13px;
+                        white-space: pre-line;
+                        margin-bottom: 10px;
+                    }                        
+                }            
+            }
+        }
+        .photo-list {
+            height: 120px;
+            min-height: 120px;
+            width: 100%;
+            margin: 15px 0px;
+            display: flex;
+            overflow-x: scroll;            
+            .photo {
+                background-color: #E7EDEF;
+                width: 250px;
+                min-width: 250px;
+                max-width: 250px;
+                margin-right: 20px;
+                border-radius: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    height: 100%;
+                    width: auto;
+                    &:hover { 
+                        cursor: pointer;
+                    }
+                }
+            }
+        }  
+    }
+    .product-detail-options {
+        width: 25%;
+        height: 100%;
+        padding: 0px 25px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .size {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;            
+            .option-list {
+                display: flex;
+                width: 100%;
+                overflow-x: scroll;
+                padding: 5px 0px;
+                .option {
+                    width: 45px;
+                    height: 45px;
+                    line-height: 45px;
+                    margin: 0px 10px;                    
+                    border-radius: 15px;
+                    text-align: center;
+                    font-weight: bold;
+                    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+                    transition: 300ms;
+                    &:hover {
+                        background-color: black;
+                        color: white;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .size-active {
+            background-color: black;
+            color: white;
+        }
+        .unit-price {
+            .price {
+                padding: 5px 10px;
+            }
+        }
+        .quantity {
+            .chosen-quantiy {
+                margin: 5px 0px;
+                background-color: #eee;                
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                border-radius: 15px;  
+                position: relative;    
+                div {
+                    width: 24px;
+                    height: 24px;
+                    line-height: 25px;
+                    font-size: 20px;
+                    text-align: center;
+                    border-radius: 50%;
+                    background-color: black;
+                    color: white;
+                    border: solid 5px white;                        
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .less {
+                    position: absolute;
+                    left: -13px;               
+                    top: 5px; 
+                }   
+                .more {
+                    position: absolute;
+                    right: -13px;               
+                    top: 5px;
+                }       
+            }
+        }
+        .order-infor {
+            display: flex;
+            margin-bottom: 40px;
+            .total-price {
+                width: 150px;
+                line-height: 45px;
+                text-align: center;
+            }
+            .add-to-cart {
+                flex-grow: 1;
+                line-height: 45px;
+                text-align: center;
+                border-radius: 15px;
+                background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+                box-shadow: 0px 0px 15px 15px #8bc5ec2a;
                 &:hover {
                     cursor: pointer;
                 }
             }
+
         }
-        .list-detail-photos{
-            min-height: 100px;
-            max-height: 100px;
-            width: 100%;
-            margin: 10px;
-            display: flex;   
-            justify-content: center; 
-            overflow: auto;
-            border-radius: 5px;
-            .list-scroll {
-                overflow-x: scroll;
-                overflow-y: hidden;
-                white-space: nowrap;                
-                img {
-                    height: 100px;
-                    width: 100px;
-                    overflow-x: scroll;
-                    margin: 0 10px;
-                    border-radius: 5px;
-                    &:hover {
-                        cursor: pointer;
-                    }
-            }
-            }
-            
+        .label {
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
         }
-        
-    }
-    .product-detail-content {
-        width: 50%;
-        height: 100%;
-        background-color: #9599E2;
-        border-radius: 5px;
     }
 }
 
@@ -441,5 +573,6 @@ header {
 }
 @keyframes bluring {
     0% {filter: blur(0px);}
+    25% {filter: blur(0px);}
     100% {filter: blur(3px);}
 }

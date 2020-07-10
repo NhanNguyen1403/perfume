@@ -1,4 +1,4 @@
-<div [class.blur]="showProductDetailModal" >
+<div [class.blur]="showProductDetailModal">
     <header>
         <div class="logo">P</div>
     </header>
@@ -6,29 +6,20 @@
     <div class="dashboard">
         <div class="category">
             <div class="title">CATEGORY</div>
-            <div 
-                class="item" 
-                *ngFor="let item of categoryList"
-                [class.category-active]="currentCategory == item"
+            <div class="item" *ngFor="let item of categoryList" [class.category-active]="currentCategory == item"
                 (click)="changeCategory(item)">{{item}}
             </div>
-        </div>    
+        </div>
         <div class="view">
             <div class="search-area">
                 <div class="button-search" (wheel)="horizontalScroll($event, 'button-search')">
-                    <div 
-                        class="brand-search" 
-                        *ngFor='let brand of brandList'   
-                        (wheel)="horizontalScroll($event, 'button-search')"                      
-                        [class.brand-active]="currentBrand == brand"
+                    <div class="brand-search" *ngFor='let brand of brandList'
+                        (wheel)="horizontalScroll($event, 'button-search')" [class.brand-active]="currentBrand == brand"
                         (click)='changeBrand(brand)'>{{brand}}
                     </div>
                 </div>
                 <div class="typing-search">
-                    <input 
-                        type="text"
-                        placeholder="Searching. . ."
-                        (keyup)="searchName($event)"
+                    <input type="text" placeholder="Searching. . ." (keyup)="searchName($event)"
                         value={{searchContent}}>
                 </div>
             </div>
@@ -37,10 +28,10 @@
                 <div class="video-banner">
                     <div class="video"></div>
                 </div>
-            </div>        
+            </div>
             <div class="product">
-                <div class="item" *ngFor='let product of productListFilter' >
-                    <div class="photo-cover" (click)="toggleModal()">
+                <div class="item" *ngFor='let product of productListFilter'>
+                    <div class="photo-cover" (click)="toggleModal(product)">
                         <img src={{product.photos.medium[0]}} alt={{product.name}}>
                     </div>
                     <div class="brief">
@@ -48,7 +39,7 @@
                         <p class="price">{{product.size.small.price + '.00 $'}}</p>
                     </div>
                     <div class="add" (click)="addProductToCart(product)">+</div>
-                </div>                      
+                </div>
             </div>
         </div>
     </div>
@@ -73,15 +64,55 @@
 </div>
 <div *ngIf="showProductDetailModal" (click)="toggleModal()" class="blur-cover"></div>
 <div *ngIf="showProductDetailModal" class="product-detail-modal">
-    <div class="product-detail-photos">
-        <div class="current-detail-photo">
-            <img src={{currentproductDetailPhoto}}>
+    <div class="product-detail-info">
+        <div class="name">{{productDetail.name}}</div>
+        <div class="info">
+            <div class="current-photo" (wheel)="horizontalScroll($event, 'info')">
+                <img src={{currentproductDetailPhoto}}>
+            </div>
+            <div class="info-content">
+                <div class="info-tab">DESCRIPTION</div>
+                <div class="product-description">
+                    <div class="scroll">
+                        {{productDetail.description}}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="list-detail-photos">
-            <div class="list-scroll" (wheel)="horizontalScroll($event, 'list-scroll')">
-                <img *ngFor="let photoPath of productDetail.photos.small" src={{photoPath}}>
+        <div class="photo-list" (wheel)="horizontalScroll($event, 'photo-list')">
+            <div class="photo" *ngFor="let photoPath of productDetail.photos.medium">
+                <img src={{photoPath}}>
             </div>
         </div>
     </div>
-    <div class="product-detail-content"></div>
+    <div class="product-detail-options">
+        <div class="size">
+            <div class="label">SIZE</div>
+            <div class="option-list">
+                <div 
+                class="option"                 
+                *ngFor="let size of productDetail.size | keyvalue"                
+                [class.size-active]="productDetail.sizeChosen == size.key"
+                (click)="changeSize(size.key)">
+                {{size.key[0].toUpperCase()}}
+                </div>
+            </div>
+        </div>
+        <div class="unit-price">
+            <div class="label">UNIT PRICE</div>
+            <div class="price">{{productDetail.size[productDetail.sizeChosen].price + '.00 $'}}</div>
+        </div>
+        <div class="quantity">
+            <div class="label">QUANTITY</div>
+            <div class="chosen-quantiy">
+                {{productDetail.quantity}}
+                <div class="less" (click)="changeQuantity()">-</div>
+                <div class="more" (click)="changeQuantity('ADD')">+</div>
+            </div>
+        </div>
+        <div class="order-infor">
+            <div class="total-price">{{productDetail.price}}.00$</div>
+            <div class="add-to-cart" (click)="addProductToCart(productDetail)">ADD</div>
+        </div>
+    </div>
 </div>
