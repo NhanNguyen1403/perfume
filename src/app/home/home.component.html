@@ -35,8 +35,8 @@
                         <img src={{product.photos.medium[0]}} alt={{product.name}}>
                     </div>
                     <div class="brief">
-                        <p class="name">{{product.name.slice(0,13) + '...'}}</p>
-                        <p class="price">{{product.size.small.price + '.00 $'}}</p>
+                        <p class="name" (click)="toggleModal(product)">{{product.name.slice(0,13) + '...'}}</p>
+                        <p class="price" (click)="toggleModal(product)">{{product.size.small.price + '.00 $'}}</p>
                     </div>
                     <div class="add" (click)="addProductToCart(product)">+</div>
                 </div>
@@ -46,13 +46,13 @@
     <div class="cart" [class.cart-active]="this.productChosenList.length > 0">
         <div class="products-chosen">
             <div class="item-scroll" (wheel)="horizontalScroll($event, 'products-chosen')">
-                <div class="item" *ngFor='let productChosen of productChosenList'>
+                <div class="item" *ngFor='let productChosen of productChosenList' (click)="toggleModal(productChosen, true)">
                     <div class="avatar">
                         <img src={{productChosen.photos.small[0]}} alt={{productChosen.name}}>
                     </div>
                     <div class="product-chosen-brief">
                         <p class="name">{{productChosen.name.slice(0,13) + '...'}}</p>
-                        <p class="price">{{productChosen.sizeChosen.price + '.00 $'}}</p>
+                        <p class="price">{{productChosen.size[productChosen.sizeChosen].price + '.00 $'}}</p>
                     </div>
                     <div class="remove">{{productChosen.quantity}}</div>
                 </div>
@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="photo-list" (wheel)="horizontalScroll($event, 'photo-list')">
-            <div class="photo" *ngFor="let photoPath of productDetail.photos.medium">
+            <div class="photo" *ngFor="let photoPath of productDetail.photos.medium; ; let i = index" (click)="changePhoto(productDetail.photos.large[i])">
                 <img src={{photoPath}}>
             </div>
         </div>
@@ -114,5 +114,6 @@
             <div class="total-price">{{productDetail.price}}.00$</div>
             <div class="add-to-cart" (click)="addProductToCart(productDetail)">ADD</div>
         </div>
+        <div class="button-close" (click)="toggleModal()">X</div>
     </div>
 </div>

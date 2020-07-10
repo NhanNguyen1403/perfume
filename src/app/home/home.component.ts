@@ -601,13 +601,17 @@ export class HomeComponent {
   currentproductDetailPhoto = 'https://dummyimage.com/500x500/dddddd/fff.png'
 
 
-  toggleModal(product?: any) {
-    if (product) {
-      this.productDetail = {
-        ...product,
-        sizeChosen: 'small',
-        price: product.size.small.price,
-        quantity: 1
+  toggleModal(product?: any, isProductChosen?: boolean) {
+    if (product ) {
+      if (isProductChosen) {
+        this.productDetail = {...product}
+      } else {
+        this.productDetail = {
+          ...product,
+          sizeChosen: 'small',
+          price: product.size.small.price,
+          quantity: 1
+        }
       }
     }
     this.showProductDetailModal = !this.showProductDetailModal
@@ -629,11 +633,14 @@ export class HomeComponent {
   changeSize(newSize: any) {
     this.productDetail.sizeChosen = newSize
   }
+  changePhoto(photoPath) {
+    this.currentproductDetailPhoto = photoPath
+  }
   changeQuantity(type?: any) {
     if (type == 'ADD') {
       this.productDetail.quantity += 1
     } else {
-      this.productDetail.quantity -= 1
+      this.productDetail.quantity -= this.productDetail.quantity == 0 ? 0 : 1      
     }
     this.productDetail.price = this.productDetail.size[this.productDetail.sizeChosen].price * this.productDetail.quantity
   }
@@ -661,7 +668,6 @@ export class HomeComponent {
       for (let product of this.tempBrandSearch) {
         if (this.currentBrand == product.brand) this.productListFilter.push(product)
       }
-      console.log(this.productListFilter)
     }
   }
   searchName(event: any) {
@@ -681,7 +687,6 @@ export class HomeComponent {
           this.categoryList.push('SEARCH')
         }
         this.changeCategory('SEARCH')
-        console.log(1)
       }, 1500);
     }
   }
@@ -729,9 +734,9 @@ export class HomeComponent {
   addProductToCart(productInfo: any) {
     let productEntity = { ...productInfo }
     for (let product of this.productChosenList) {
-      if (product.id == productEntity.id) {
-        productEntity.quantity ? product.quantity = productEntity.quantity : product.quantity += 1
-        product.sizeChosen = productEntity.sizeChosen || 'small'      
+      if (product.id == productEntity.id && ((productEntity.sizeChosen && product.sizeChosen == productEntity.sizeChosen) || (!productEntity.sizeChosen && product.sizeChosen == 'small')) ) {
+        productEntity.quantity || productEntity.quantity == 0 ? product.quantity = productEntity.quantity : product.quantity += 1        
+        product.sizeChosen = productEntity.sizeChosen || 'small'
         product.price = product.size[product.sizeChosen].price * product.quantity
         this.checkProductChosen()
         this.showProductDetailModal = false
@@ -741,14 +746,17 @@ export class HomeComponent {
     productEntity.quantity = productEntity.quantity || 1
     productEntity.sizeChosen = productEntity.sizeChosen || 'small'
     productEntity.price = productEntity.price || productEntity.size.small.price
-    this.productChosenList.push(productEntity)    
+    this.productChosenList.push(productEntity)
     this.checkProductChosen()
     this.showProductDetailModal = false
   }
   checkProductChosen() {
     this.totalPrice = 0
-    for (let product of this.productChosenList) {
+    for (let [index,product] of this.productChosenList.entries()) {
       this.totalPrice += product.price
+      if (product.quantity == 0) {
+        this.productChosenList.splice(index, 1)
+      }
     }
   }
 }
