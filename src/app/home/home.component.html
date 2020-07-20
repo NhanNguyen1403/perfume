@@ -24,7 +24,15 @@
                 </div>
             </div>
             <div class="banner">
-                <div class="slide-banner"></div>
+                <div class="slide-banner">
+                    <div class="banner-list">
+                        <div class="banner" *ngFor="let banner of bannerList">
+                            <img src={{banner.photos.banner}} (click)="toggleModal(banner)">
+                            <div class="tag">NEW ARRIVAL</div>
+                            <div class="view-detail" (click)="toggleModal(banner)">DETAIL</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="video-banner">
                     <div class="video"></div>
                 </div>

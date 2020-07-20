@@ -44,6 +44,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -92,6 +93,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -140,6 +142,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -188,6 +191,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -236,6 +240,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -284,6 +289,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -332,6 +338,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -380,6 +387,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -428,6 +436,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -476,6 +485,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -524,6 +534,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -572,6 +583,7 @@ export class HomeComponent {
         }
       },
       photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
         large: [
           'https://dummyimage.com/500x500/dddddd/fff.png',
           'https://dummyimage.com/500x500/dddddd/fff.png',
@@ -599,6 +611,155 @@ export class HomeComponent {
   showProductDetailModal = false
   productDetail: any
   currentproductDetailPhoto = 'https://dummyimage.com/500x500/dddddd/fff.png'
+  bannerList = [
+    {
+      id: 1,
+      name: "MONTB 10 MEN",
+      description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    
+    Dolorem officiis incidunt tenetur ipsa velit id voluptates non alias laudantium molestiae rerum, similique enim iusto? Non veniam similique expedita. 
+    
+    hic nulla ipsam fugit ab ipsum alias perspiciatis repellat molestiae provident architecto tempore minima odio? Quibusdam maiores eos provident, aperiam dolorum asperiores eius officia! Libero deleniti nam. 
+    
+    consequuntur voluptatum dolorum soluta ullam dicta alias eaque assumenda saepe architecto dignissimos totam, repudiandae necessitatibus iusto. Doloribus fugiat dignissimos nulla soluta unde dolor neque sint.`,
+      gender: 'MEN',
+      views: 10,
+      brand: 'MONTBLANC',
+      size: {
+        large: {
+          quantity: 100,
+          price: 900
+        },
+        medium: {
+          quantity: 50,
+          price: 450
+        },
+        small: {
+          quantity: 25,
+          price: 200
+        }
+      },
+      photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
+        large: [
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+        ],
+        medium: [
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+        ],
+        small: [
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+        ]
+      },
+    },
+    {
+      id: 2,
+      name: "DIOR 30 MEN",
+      description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    
+    Dolorem officiis incidunt tenetur ipsa velit id voluptates non alias laudantium molestiae rerum, similique enim iusto? Non veniam similique expedita. 
+    
+    hic nulla ipsam fugit ab ipsum alias perspiciatis repellat molestiae provident architecto tempore minima odio? Quibusdam maiores eos provident, aperiam dolorum asperiores eius officia! Libero deleniti nam. 
+    
+    consequuntur voluptatum dolorum soluta ullam dicta alias eaque assumenda saepe architecto dignissimos totam, repudiandae necessitatibus iusto. Doloribus fugiat dignissimos nulla soluta unde dolor neque sint.`,
+      gender: 'MEN',
+      views: 30,
+      brand: 'DIOR',
+      size: {
+        large: {
+          quantity: 100,
+          price: 900
+        },
+        medium: {
+          quantity: 50,
+          price: 450
+        },
+        small: {
+          quantity: 25,
+          price: 200
+        }
+      },
+      photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
+        large: [
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+        ],
+        medium: [
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+        ],
+        small: [
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+        ]
+      },
+    },
+    {
+      id: 3,
+      name: "GUCCI 20 MEN",
+      description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    
+    Dolorem officiis incidunt tenetur ipsa velit id voluptates non alias laudantium molestiae rerum, similique enim iusto? Non veniam similique expedita. 
+    
+    hic nulla ipsam fugit ab ipsum alias perspiciatis repellat molestiae provident architecto tempore minima odio? Quibusdam maiores eos provident, aperiam dolorum asperiores eius officia! Libero deleniti nam. 
+    
+    consequuntur voluptatum dolorum soluta ullam dicta alias eaque assumenda saepe architecto dignissimos totam, repudiandae necessitatibus iusto. Doloribus fugiat dignissimos nulla soluta unde dolor neque sint.`,
+      gender: 'MEN',
+      views: 20,
+      brand: 'GUCCI',
+      size: {
+        large: {
+          quantity: 100,
+          price: 900
+        },
+        medium: {
+          quantity: 50,
+          price: 450
+        },
+        small: {
+          quantity: 25,
+          price: 200
+        }
+      },
+      photos: {
+        banner: 'https://dummyimage.com/600x200/dddddd/fff.png',
+        large: [
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+          'https://dummyimage.com/500x500/dddddd/fff.png',
+        ],
+        medium: [
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+          'https://dummyimage.com/200x200/dddddd/fff.png',
+        ],
+        small: [
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+          'https://dummyimage.com/100x100/dddddd/fff.png',
+        ]
+      },
+    }
+  ]
 
 
   toggleModal(product?: any, isProductChosen?: boolean) {
