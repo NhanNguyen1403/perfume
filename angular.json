@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Perfume"
+    }
+  },
+  "defaultProject": "Perfume",
+  "cli": {
+    "analytics": false
+  }
 }
