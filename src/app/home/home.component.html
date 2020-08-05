@@ -1,6 +1,16 @@
 <div [class.blur]="showProductDetailModal">
     <header>
         <div class="logo">P</div>
+        <div class="mobile-category-icon" (click)="toggleMobileCategory()" >
+            <div class="first" [class.active]="showMobileCategory"></div>
+            <div class="second" [class.active]="showMobileCategory"></div>
+            <div class="third" [class.active]="showMobileCategory"></div>
+        </div>
+        <div [class.mobile-category-content-active]="showMobileCategory" class="mobile-category-content">
+            <div class="item" *ngFor="let item of categoryList" [class.category-active]="currentCategory == item"
+                (click)="changeCategory(item); toggleMobileCategory()">{{item}}
+            </div>
+        </div>
     </header>
 
     <div class="dashboard">
@@ -9,7 +19,7 @@
             <div class="item" *ngFor="let item of categoryList" [class.category-active]="currentCategory == item"
                 (click)="changeCategory(item)">{{item}}
             </div>
-        </div>
+        </div> 
         <div class="view">
             <div *ngIf="currentCategory != 'ABOUT US'" class="search-area">
                 <div class="button-search" (wheel)="horizontalScroll($event, 'button-search')">
@@ -53,10 +63,10 @@
                     <div class="add" (click)="addProductToCart(product)">+</div>
                 </div>
             </div>
-            <about-us></about-us>
+            <about-us *ngIf="currentCategory == 'ABOUT US'"></about-us>
         </div>                            
     </div>
-    <div class="cart" [class.cart-active]="this.productChosenList.length > 0">
+    <div *ngIf="currentCategory != 'ABOUT US'" class="cart" [class.cart-active]="this.productChosenList.length > 0">
         <div class="products-chosen">
             <div class="item-scroll" (wheel)="horizontalScroll($event, 'products-chosen')">
                 <div class="item" *ngFor='let productChosen of productChosenList' (click)="toggleModal(productChosen, true)">
@@ -76,7 +86,7 @@
     </div>
 </div>
 <div *ngIf="showProductDetailModal" (click)="toggleModal()" class="blur-cover"></div>
-<div *ngIf="showProductDetailModal" class="product-detail-modal">
+<div *ngIf="showProductDetailModal" [class.modal-active]="showProductDetailModal" class="product-detail-modal">
 <div class="product-detail-info">
     <div class="name">{{productDetail.name}}</div>
     <div class="info">

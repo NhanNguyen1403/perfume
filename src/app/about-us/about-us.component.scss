@@ -3,7 +3,7 @@
     padding-right: 160px;
     .title {
         text-transform: uppercase;
-        margin: 20px 0px;
+        margin: 0px 0px 20px 0px;
     }
     a {
         text-decoration: none;
@@ -11,5 +11,12 @@
         font-weight: bolder;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+}
+@media only screen 
+    and(min-width:320px)
+    and(max-width:599px)  {
+    .about {
+        padding: 0;
     }
 }

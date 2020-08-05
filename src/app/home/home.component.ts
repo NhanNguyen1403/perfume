@@ -15,6 +15,7 @@ export class HomeComponent {
   searchContent = ''
   totalPrice = 0
   autoSearch: any
+  showMobileCategory = false
   productList = [
     {
       id: 1,
@@ -629,8 +630,11 @@ export class HomeComponent {
   ]
   currentBanner = 0
   bannerInterval = setInterval(() => {this.changeBanner()}, 5000)
-  
 
+  
+  toggleMobileCategory() {
+    this.showMobileCategory = !this.showMobileCategory
+  }
 
   toggleModal(product?: any, isProductChosen?: boolean) {
     if (product) {
