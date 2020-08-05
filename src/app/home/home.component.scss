@@ -796,19 +796,31 @@ header {
                 height: auto;
                 margin: 15px 0px;
                 .slide-banner {
+                    height: 150px;
                     margin: 0px 0px 10px 0px;
-                    .tag {
-                        padding: 7.5px 10px;
-                    }
-                    .view-detail {
-                        bottom: 10px;
-                        padding: 7.5px 10px;
-                    }
-                    .change-banner {
-                        bottom: 10px;
-                    }
+                    .banner-list {
+                        .banner{
+                            height: 100%;
+                            img {
+                                height: 100%;
+                                width: auto;
+                            }
+                            .tag {
+                                padding: 7.5px 10px;
+                            }
+                            .view-detail {
+                                bottom: 10px;
+                                padding: 7.5px 10px;
+                            }
+                            .change-banner {
+                                bottom: 10px;
+                            }
+                        }
+                    }                    
+                    
                 }
                 .video-banner {
+                    height: 200px;
                     .video {
                         margin: 0px;
                     }
@@ -831,7 +843,7 @@ header {
     .product-detail-modal {
         flex-direction: column;
         width: 100vw;
-        height: 80vh;
+        height: 90vh;
         position: fixed;
         left: unset;
         top: unset;
