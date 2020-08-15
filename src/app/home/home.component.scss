@@ -865,8 +865,8 @@ header {
                     min-width: 100%;
                     max-width: 100%;
                     img {
-                        width: auto;
-                        height: 100%;
+                        width: 250px;
+                        height: 250px;
                     }
                 }
             }
@@ -877,7 +877,11 @@ header {
                 .photo {
                     min-width: 150px;
                     max-width: 150px;   
-                    margin-right: 10px;                 
+                    margin-right: 10px;   
+                    img {
+                        width: 80px;
+                        height: 80px;
+                    }              
                 }
             }
         }
