@@ -570,6 +570,7 @@ header {
             margin: 15px 0px;
             display: flex;
             overflow-x: scroll;            
+            overflow-y: hidden;
             .photo {
                 background-color: #E7EDEF;
                 width: 250px;
@@ -839,7 +840,8 @@ header {
     .product-detail-modal {
         flex-direction: column;
         width: 100vw;
-        height: 90vh;
+        height: auto;
+        max-height: 90vh;
         left: unset;
         top: unset;
         bottom: -80vh;
@@ -854,6 +856,7 @@ header {
             flex-grow: 1;
             .info {
                 margin: 5px 0px 0px 0px ;
+                max-height: 250px;
                 .info-content {
                     display: none;
                 }
@@ -862,8 +865,8 @@ header {
                     min-width: 100%;
                     max-width: 100%;
                     img {
-                        width: 100%;
-                        height: auto;
+                        width: auto;
+                        height: 100%;
                     }
                 }
             }
