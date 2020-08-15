@@ -859,6 +859,7 @@ header {
             padding: 10px;
             width: auto;
             overflow: unset;
+            flex-grow: 1;
             .info {
                 margin: 5px 0px 0px 0px ;
                 .info-content {
@@ -866,10 +867,12 @@ header {
                 }
                 .current-photo {
                     width: 100%;
-                    min-height: 200px;         
-                    max-height: 200px;     
                     min-width: 100%;
                     max-width: 100%;
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
                 }
             }
             .photo-list {
@@ -885,6 +888,8 @@ header {
         }
         .product-detail-options {
             width: auto;
+            min-height: 230px;
+            max-height: 230px;
             padding: 0px 10px;
             border-radius: 0px;
             .button-close {
@@ -912,6 +917,9 @@ header {
                     width: 50%;
                     margin: 0px 10px 0px 0px;
                 }
+            }
+            .order-infor {
+                margin-bottom: 20px;
             }
         }
     }
