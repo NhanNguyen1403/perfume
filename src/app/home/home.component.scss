@@ -854,7 +854,8 @@ header {
         bottom: -80vh;
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
-        animation: slide-up 400ms;        
+        animation: slide-up 400ms;    
+        overflow: scroll;    
         .product-detail-info {
             padding: 10px;
             width: auto;
