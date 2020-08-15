@@ -1,89 +1,87 @@
-<div [class.blur]="showProductDetailModal">
-    <header>
-        <div class="logo">N</div>
-        <div class="mobile-category-icon" (click)="toggleMobileCategory()" >
-            <div class="first" [class.active]="showMobileCategory"></div>
-            <div class="second" [class.active]="showMobileCategory"></div>
-            <div class="third" [class.active]="showMobileCategory"></div>
+<header>
+    <div class="logo">N</div>
+    <div class="mobile-category-icon" (click)="toggleMobileCategory()" >
+        <div class="first" [class.active]="showMobileCategory"></div>
+        <div class="second" [class.active]="showMobileCategory"></div>
+        <div class="third" [class.active]="showMobileCategory"></div>
+    </div>
+    <div [class.mobile-category-content-active]="showMobileCategory" class="mobile-category-content">
+        <div class="item" *ngFor="let item of categoryList" [class.category-active]="currentCategory == item"
+            (click)="changeCategory(item); toggleMobileCategory()">{{item}}
         </div>
-        <div [class.mobile-category-content-active]="showMobileCategory" class="mobile-category-content">
-            <div class="item" *ngFor="let item of categoryList" [class.category-active]="currentCategory == item"
-                (click)="changeCategory(item); toggleMobileCategory()">{{item}}
-            </div>
-        </div>
-    </header>
+    </div>
+</header>
 
-    <div class="dashboard">
-        <div class="category">
-            <div class="title">CATEGORY</div>
-            <div class="item" *ngFor="let item of categoryList" [class.category-active]="currentCategory == item"
-                (click)="changeCategory(item)">{{item}}
-            </div>
-        </div> 
-        <div class="view">
-            <div *ngIf="currentCategory != 'ABOUT US'" class="search-area">
-                <div class="button-search" (wheel)="horizontalScroll($event, 'button-search')">
-                    <div class="brand-search" *ngFor='let brand of brandList'
-                        (wheel)="horizontalScroll($event, 'button-search')" [class.brand-active]="currentBrand == brand"
-                        (click)='changeBrand(brand)'>{{brand}}
-                    </div>
-                </div>
-                <div class="typing-search">
-                    <input type="text" placeholder="Searching. . ." (keyup)="searchName($event)"
-                        value={{searchContent}}>
+<div class="dashboard">
+    <div class="category">
+        <div class="title">CATEGORY</div>
+        <div class="item" *ngFor="let item of categoryList" [class.category-active]="currentCategory == item"
+            (click)="changeCategory(item)">{{item}}
+        </div>
+    </div> 
+    <div class="view">
+        <div *ngIf="currentCategory != 'ABOUT US'" class="search-area">
+            <div class="button-search" (wheel)="horizontalScroll($event, 'button-search')">
+                <div class="brand-search" *ngFor='let brand of brandList'
+                    (wheel)="horizontalScroll($event, 'button-search')" [class.brand-active]="currentBrand == brand"
+                    (click)='changeBrand(brand)'>{{brand}}
                 </div>
             </div>
-            <div *ngIf="currentCategory != 'ABOUT US'" class="banner">
-                <div class="slide-banner">
-                    <div class="banner-list">
-                        <div class="banner">
-                            <img src={{bannerList[currentBanner].photos.banner}} (click)="toggleModal(bannerList[currentBanner])">
-                            <div class="tag">NEW ARRIVAL</div>
-                            <div class="view-detail" (click)="toggleModal(bannerList[currentBanner])">DETAIL</div>
-                            <div class="change-banner back-banner" (click)="changeBanner(true)">&lt;</div>
-                            <div class="change-banner next-banner" (click)="changeBanner()">&gt;</div>
-                        </div>
-                    </div>
-                </div>                
-                <div class="video-banner">
-                    <div class="video">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/G4Z8948i8aU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="typing-search">
+                <input type="text" placeholder="Searching. . ." (keyup)="searchName($event)"
+                    value={{searchContent}}>
+            </div>
+        </div>
+        <div *ngIf="currentCategory != 'ABOUT US'" class="banner">
+            <div class="slide-banner">
+                <div class="banner-list">
+                    <div class="banner">
+                        <img src={{bannerList[currentBanner].photos.banner}} (click)="toggleModal(bannerList[currentBanner])">
+                        <div class="tag">NEW ARRIVAL</div>
+                        <div class="view-detail" (click)="toggleModal(bannerList[currentBanner])">DETAIL</div>
+                        <div class="change-banner back-banner" (click)="changeBanner(true)">&lt;</div>
+                        <div class="change-banner next-banner" (click)="changeBanner()">&gt;</div>
                     </div>
                 </div>
-            </div>
-            <div *ngIf="currentCategory != 'ABOUT US'" class="product">
-                <div class="item" *ngFor='let product of productListFilter'>
-                    <div class="photo-cover" (click)="toggleModal(product)">
-                        <img src={{product.photos.medium[0]}} alt={{product.name}}>
-                    </div>
-                    <div class="brief">
-                        <p class="name" (click)="toggleModal(product)">{{product.name.slice(0,13) + '...'}}</p>
-                        <p class="price" (click)="toggleModal(product)">{{product.size.small.price + '.00 $'}}</p>
-                    </div>
-                    <div class="add" (click)="addProductToCart(product)">+</div>
-                </div>
-            </div>
-            <about-us *ngIf="currentCategory == 'ABOUT US'"></about-us>
-        </div>                            
-    </div>
-    <div *ngIf="currentCategory != 'ABOUT US'" class="cart" [class.cart-active]="this.productChosenList.length > 0">
-        <div class="products-chosen">
-            <div class="item-scroll" (wheel)="horizontalScroll($event, 'products-chosen')">
-                <div class="item" *ngFor='let productChosen of productChosenList' (click)="toggleModal(productChosen, true)">
-                    <div class="avatar">
-                        <img src={{productChosen.photos.small[0]}} alt={{productChosen.name}}>
-                    </div>
-                    <div class="product-chosen-brief">
-                        <p class="name">{{productChosen.name.slice(0,13) + '...'}}</p>
-                        <p class="price">{{productChosen.size[productChosen.sizeChosen].price + '.00 $'}}</p>
-                    </div>
-                    <div class="remove">{{productChosen.quantity}}</div>
+            </div>                
+            <div class="video-banner">
+                <div class="video">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/G4Z8948i8aU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
-        <div class="total-price">{{totalPrice + '.00 $'}}</div>
-        <div class="placed-order">BUY</div>        
+        <div *ngIf="currentCategory != 'ABOUT US'" class="product">
+            <div class="item" *ngFor='let product of productListFilter'>
+                <div class="photo-cover" (click)="toggleModal(product)">
+                    <img src={{product.photos.medium[0]}} alt={{product.name}}>
+                </div>
+                <div class="brief">
+                    <p class="name" (click)="toggleModal(product)">{{product.name.slice(0,13) + '...'}}</p>
+                    <p class="price" (click)="toggleModal(product)">{{product.size.small.price + '.00 $'}}</p>
+                </div>
+                <div class="add" (click)="addProductToCart(product)">+</div>
+            </div>
+        </div>
+        <about-us *ngIf="currentCategory == 'ABOUT US'"></about-us>
+    </div>                            
+</div>
+<div *ngIf="currentCategory != 'ABOUT US'" class="cart" [class.cart-active]="this.productChosenList.length > 0">
+    <div class="products-chosen">
+        <div class="item-scroll" (wheel)="horizontalScroll($event, 'products-chosen')">
+            <div class="item" *ngFor='let productChosen of productChosenList' (click)="toggleModal(productChosen, true)">
+                <div class="avatar">
+                    <img src={{productChosen.photos.small[0]}} alt={{productChosen.name}}>
+                </div>
+                <div class="product-chosen-brief">
+                    <p class="name">{{productChosen.name.slice(0,13) + '...'}}</p>
+                    <p class="price">{{productChosen.size[productChosen.sizeChosen].price + '.00 $'}}</p>
+                </div>
+                <div class="remove">{{productChosen.quantity}}</div>
+            </div>
+        </div>
     </div>
+    <div class="total-price">{{totalPrice + '.00 $'}}</div>
+    <div class="placed-order">BUY</div>        
 </div>
 <div *ngIf="showProductDetailModal" (click)="toggleModal()" class="blur-cover"></div>
 <div *ngIf="showProductDetailModal" [class.modal-active]="showProductDetailModal" class="product-detail-modal">

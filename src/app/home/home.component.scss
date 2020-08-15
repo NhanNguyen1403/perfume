@@ -480,20 +480,11 @@ header {
     bottom: 0;
 }
 
-.blur {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    // background-color: rgba(255, 255, 255, 0.5);
-    // // filter: blur(3px);   
-}
 .blur-cover {
     width: 100vw;
     height: 100vh;
-    position: absolute;
-    top: 0;
+    position: fixed;
+    bottom: 0;
     left: 0;
     z-index: 10;
     background-color: rgba(255,255,255, 0.7);
@@ -505,7 +496,7 @@ header {
 .product-detail-modal {
     width: 80vw;
     height: 80vh;
-    position: absolute;
+    position: fixed;
     z-index: 20;
     top: 10vh;
     left: 10vw;
@@ -848,7 +839,6 @@ header {
         flex-direction: column;
         width: 100vw;
         height: 90vh;
-        position: fixed;
         left: unset;
         top: unset;
         bottom: -80vh;
